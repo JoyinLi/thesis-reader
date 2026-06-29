@@ -1,80 +1,94 @@
 ---
 name: thesis-reader
-description: read, analyze, and synthesize academic papers, research reports, arxiv papers, technical blogs, and paper notes into a reusable thesis-reading workflow. use when the user asks for paper deep reading, structured research interpretation, ai/ux/hci implications, portfolio translation, bilingual summaries, xiaohongshu-style research posts, 4-6 page visual decks after multi-turn lm discussion, or wants to understand a study's motivation, method, evidence, limitations, and product design meaning.
+description: Read, analyze, verify, and synthesize academic papers, research reports, arXiv papers, technical blogs, and paper notes. Use for paper deep reading, structured research interpretation, source-grounded summaries, AI/UX/HCI or AI PM implications, portfolio translation, bilingual notes, multi-turn research discussion, Xiaohongshu research posts, 4-6 page visual decks, or a repeatable thesis-reading loop with persistent state, independent review, revision limits, and human approval gates.
 ---
 
 # Thesis Reader
 
-## Overview
+## Purpose
 
-Use this skill to turn papers or research articles into a structured, decision-useful reading output. Default to professional Chinese, concise but not shallow, with clear separation between what the source says, what can be inferred, and what matters for ai/ux/hci/product work.
+Turn research sources into rigorous, decision-useful understanding. Separate source claims, evidence, inference, critique, and design implications. Prefer professional Chinese unless the user requests another language.
 
-## Source Handling
+## Select The Run Mode
 
-1. Determine the input type: paper pdf, url, abstract, screenshots, pasted text, citation, or user notes.
-2. Prefer primary sources: paper pdf, official project page, author blog, conference page, or arxiv record.
-3. If only a secondary article is provided, state that the analysis is based on the provided article unless a primary source is found.
-4. If the source is missing, ask for the paper, link, title, or pasted text before doing a full deep read.
-5. When using web-accessible sources, cite the source for factual claims. Do not invent metadata, numbers, datasets, results, or limitations.
-6. If a claim is uncertain, label it as inference, likely interpretation, or open question.
+- Use a **single pass** for a quick brief, term explanation, or narrow factual question.
+- Use the **verified reading loop** for a full deep read, weak or conflicting evidence, multi-source synthesis, portfolio translation, or any request that explicitly asks for a loop.
+- Use the **discussion-to-deck loop** only after a paper summary and meaningful follow-up discussion exist.
 
-## Workflow
+Read [loop-protocol.md](references/loop-protocol.md) before starting either loop. Create one state file per paper from [STATE.md](templates/STATE.md); keep run state outside the installed skill directory.
 
-Use this sequence for full paper reading:
+## Handle Sources
 
-1. **Orient**
-   Capture title, authors, institution, publication time, venue or source type, research field, core problem, and article structure.
-2. **Extract The Thesis**
-   Summarize the main contribution in one sentence. Then explain what the paper is really trying to prove or change.
-3. **Motivation**
-   Identify the prior problem, why existing methods are insufficient, and why this work is necessary now.
-4. **Method**
-   Explain the framework, model, experiment design, or conceptual move. Translate technical ideas into plain language without losing precision.
-5. **Evidence**
-   Extract datasets, tasks, baselines, metrics, major results, ablations, user studies, or qualitative evidence. If evidence is absent or weak, say so.
-6. **Conclusion And Limits**
-   Separate author-stated conclusions from your own assessment. Include assumptions, failure cases, missing evaluations, and future work.
-7. **ai/ux/hci Translation**
-   Explain implications for interaction design, agent products, multimodal ux, system feedback, trust, control, memory, evaluation, and portfolio opportunities.
-8. **Actionable Output**
-   Provide next-step artifacts when useful: demo concept, portfolio project angle, research-note card, xiaohongshu post, bilingual summary, or reproduction plan.
+1. Identify whether the input is a PDF, URL, abstract, screenshot, pasted text, citation, or user note.
+2. Prefer the paper PDF, official project page, author page, conference page, or arXiv record.
+3. Label analysis based only on a secondary article when no primary source is available.
+4. Stop and request the missing source when the central claims or evidence cannot be inspected.
+5. Cite factual claims drawn from web-accessible sources. Never invent metadata, numbers, datasets, results, quotations, or limitations.
+6. Mark uncertain statements as inference, interpretation, hypothesis, or open question.
+
+## Run The Verified Reading Loop
+
+1. **Preflight**
+   Confirm source accessibility, user goal, output mode, and whether current information requires web verification. Initialize the state file.
+2. **Orient**
+   Capture title, authors, institution, date, venue or source type, field, core problem, and article structure.
+3. **Build The Argument Map**
+   Extract the thesis, motivation, method, evidence, conclusion, assumptions, limitations, and unresolved questions. Preserve the chain `problem -> method -> evidence -> conclusion`.
+4. **Translate**
+   Use [ux-hci-lens.md](references/ux-hci-lens.md) only after understanding the research. Convert implications into concrete capabilities, interface states, user controls, risks, and evaluation signals.
+5. **Verify**
+   Run a separate reviewer pass with [evaluation-rubric.md](references/evaluation-rubric.md). Prefer a fresh verifier agent when available. Give the verifier the source, requested output mode, rubric, and draft, but not the worker's self-justification.
+6. **Revise**
+   Fix blocking findings and re-run verification. Allow at most two revision rounds unless the user explicitly extends the budget.
+7. **Handoff**
+   Deliver the verified output with source limitations, remaining uncertainties, and the questions most worth discussing. Update the state file.
+
+Run `python scripts/validate_output.py OUTPUT.md --mode deep-read` when a filesystem and Python are available. Treat this structural validator as a supplement to, not a replacement for, source-based review.
+
+## Continue Into Discussion And Visual Output
+
+During follow-up discussion, record only durable additions in the run state:
+
+- clarified concepts and corrected misunderstandings;
+- user conclusions, disagreements, and open questions;
+- new AI/UX/HCI implications;
+- decisions about audience, narrative, and visual emphasis.
+
+Do not generate the final Xiaohongshu deck merely because the deep read is complete. Wait for an explicit user request or a clear deck-production step. Then read [xiaohongshu-visual-deck.md](references/xiaohongshu-visual-deck.md), synthesize the paper with the discussion state, and verify the result with the visual-deck section of the rubric.
 
 ## Output Modes
 
-Choose the output mode from the user request. If unspecified, use **structured deep read**.
+Choose the mode requested by the user. Default to **structured deep read**.
 
 - **structured deep read**: rigorous paper breakdown with six to eight sections.
-- **quick brief**: short executive summary for deciding whether to read deeply.
+- **quick brief**: short decision aid for whether the source deserves deeper reading.
 - **concept explainer**: define and contextualize unfamiliar terms.
-- **ux/hci translation**: emphasize product, interface, and design implications.
-- **portfolio translation**: convert the research into a demo, case-study, or design direction.
-- **xiaohongshu post**: turn the research into concise public-facing Chinese content.
-- **xiaohongshu visual deck**: after a paper summary and multi-turn lm discussion, synthesize the paper thesis and conversation highlights into a 4-6 page xiaohongshu image-text deck with an iOS keynote-like visual style.
+- **AI/UX/HCI translation**: emphasize product and interaction implications.
+- **portfolio translation**: turn research into a demonstrable project direction.
+- **Xiaohongshu post**: produce concise public-facing Chinese content.
+- **Xiaohongshu visual deck**: produce a 4-6 page script after paper analysis and discussion.
 - **bilingual note**: provide Chinese and English in parallel.
 
-See [output-templates.md](references/output-templates.md) for reusable structures. See [ux-hci-lens.md](references/ux-hci-lens.md) when translating research into product and interaction design insight. See [xiaohongshu-visual-deck.md](references/xiaohongshu-visual-deck.md) when turning a paper plus follow-up discussion into 4-6 image-text pages.
+Read [output-templates.md](references/output-templates.md) for the selected format. Read only the other references needed for that run.
+
+## Stop And Escalate
+
+Stop the loop and ask the user when:
+
+- the primary source is inaccessible and the requested claim cannot be verified;
+- source metadata or reported results conflict materially;
+- the user must choose between competing interpretations or output goals;
+- two revision rounds fail the acceptance threshold;
+- the next step would publish content, modify an external system, or make an irreversible decision.
+
+Never let the loop change its own acceptance criteria to declare success. Record unresolved issues instead of hiding them.
 
 ## Quality Bar
 
-- Be direct. Do not overstate novelty just because a paper sounds impressive.
-- Preserve the research logic: problem → method → evidence → conclusion → implication.
-- Define technical terms in plain language when they affect understanding.
-- Use tables only for exact mappings, comparisons, datasets, metrics, or design implications.
-- Avoid long generic background sections. Keep the reading anchored to the paper.
-- For ai/ux/hci implications, go beyond "better user experience"; name specific interface patterns, user control points, feedback states, evaluation criteria, and risks.
-- When producing portfolio ideas, make them demonstrable: include scenario, user flow, system capability, interaction pattern, and evaluation signal.
+- Preserve the paper's research logic and distinguish author claims from assessment.
+- Explain technical concepts plainly without replacing precision with analogy.
+- Judge evidence strength; do not equate confident prose with strong evidence.
+- Name specific interface patterns, control points, feedback states, evaluation criteria, and risks.
+- Make portfolio directions demonstrable through scenario, flow, system capability, interaction pattern, and evaluation signal.
+- Prefer compact, high-signal output over generic background.
 
-## Default Structured Deep Read
-
-Use this structure unless the user asks otherwise:
-
-1. 论文基本信息
-2. 研究动机
-3. 核心方法 / 模型 / 框架
-4. 实验设计 / 论证方法
-5. 结论与局限
-6. 个人理解：这篇研究到底解决了什么问题
-7. 对 ai / ux / hci / ai pm 的启发
-8. 可复现、可改进、可放入作品集的方向
-
-Keep summaries compact, but expand the ux/hci implications when the user is preparing portfolio or product strategy work.
