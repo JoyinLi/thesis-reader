@@ -57,6 +57,15 @@ updated_at: ""
 - New AI/UX/HCI implications:
 - Open questions:
 
+## Visual Output
+
+- Poster style requested:
+- Poster style selected:
+- Style fallback reason:
+- Output target: text-only script / image prompt / Figma layout spec / all
+- Visual references inspected:
+- Style notes to preserve:
+
 ## Human Gates
 
 - [ ] Interpretation approved where evidence permits multiple readings
@@ -70,4 +79,3 @@ updated_at: ""
 - Discussion synthesis:
 - Visual deck:
 - Other artifacts:
-
