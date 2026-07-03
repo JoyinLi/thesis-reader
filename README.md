@@ -1,6 +1,6 @@
 # Thesis Reader
 
-A reusable ChatGPT/Codex skill for source-grounded paper reading, AI/UX/HCI translation, multi-turn discussion, and research-to-visual-deck synthesis.
+A reusable skill for source-grounded paper reading, AI/UX/HCI translation, multi-turn discussion, and research-to-visual-deck synthesis.
 
 ## Structure
 
