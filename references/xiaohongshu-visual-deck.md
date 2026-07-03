@@ -27,6 +27,22 @@ If a `thesis` folder, image references, or previously generated paper-summary im
 
 If no reference images are available, use the default visual system below.
 
+## Shape And Diagram Semantics
+
+Shapes in visual decks must be concept-driven, not fixed style assets. A shape is valid only when it helps explain the page's argument or relationship structure.
+
+Select shapes by meaning:
+
+- layered scope, containment, or abstraction: nested circles, rings, stacked frames, or depth bands;
+- process, sequence, or transformation: paths, arrows, timelines, pipes, ladders, or step grids;
+- comparison or tension: split panels, opposing columns, scales, thresholds, or boundary lines;
+- feedback, iteration, or control: loops, circular arrows, revision tracks, or checkpoint rings;
+- evidence, evaluation, or scoring: matrices, tables, gauges, ranked blocks, or plotted points;
+- uncertainty, risk, or failure: broken paths, warning blocks, gaps, red markers, or noisy fields;
+- networks or dependencies: sparse nodes, connectors, clusters, and hierarchy trees.
+
+Keep the visual system simple. Use one primary diagram idea per page. Avoid decorative shapes that do not encode content, even when they match the selected style. If a reference image uses a distinctive motif, treat it as optional visual language, not a required template.
+
 ## Poster Style Selection
 
 Before drafting a visual deck, ask:
@@ -161,6 +177,8 @@ Before finalizing, check:
 - Does the sequence tell a story rather than list paper sections mechanically?
 - Does at least one page capture the unique insight from the LM conversation?
 - Does the final page translate the paper into concrete AI/UX/HCI/product judgment?
-- Does the visual style match the selected branch? For the default branch, keep it close to an iOS keynote deck: sparse, precise, and polished. For Neo-Vintage Print, keep the aged paper, modular grid, blueprint line art, teal/vermilion accents, and technical print density consistent.
+- Does the visual style match the selected branch? For the default branch, keep it close to an iOS keynote deck: sparse, precise, and polished. For Neo-Vintage Print, keep the aged paper, modular grid, blueprint line work where useful, teal/vermilion accents, and technical print density consistent.
+- Do the chosen shapes explain the page's content relationship rather than repeat a fixed motif?
+- Is the page still visually simple after adding the diagram or shape system?
 - Is the highlight color consistent with the research institution when appropriate?
 - If it is a pure academic paper, is the deck clean without forced corporate branding?
