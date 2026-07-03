@@ -102,9 +102,11 @@ For 4-6 page image-text decks after multi-turn discussion, use [xiaohongshu-visu
 
 Use these branches when producing Xiaohongshu visual decks, poster scripts, Figma layout specs, or image-generation prompts. Ask the user which style they want before drafting poster pages. If the user does not choose a style, chooses an unknown style, or asks for the default, use the clean professional visual system already defined in [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md).
 
+Across all visual style branches, shapes are not fixed assets. Choose shapes from the content relationship on that page: nested circles for layered scope, rings for containment, paths for process, split panels for contrast, matrices for evaluation, loops for feedback, fracture or warning forms for risk, and sparse nodes for networks. Shapes must clarify the idea, carry visual taste, and preserve simplicity. Do not repeat a decorative motif merely because it appeared in a reference image.
+
 ### Default Clean Research Deck
 
-Use this branch when no specific style is selected. Follow the Default Visual System in [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md): simplified iOS keynote / product-launch feeling, large title, generous whitespace, restrained subtitle, one dominant highlight color, thin dividers, soft panels, clean callouts, and simple geometric diagrams.
+Use this branch when no specific style is selected. Follow the Default Visual System in [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md): simplified iOS keynote / product-launch feeling, large title, generous whitespace, restrained subtitle, one dominant highlight color, thin dividers, soft panels, clean callouts, and simple geometric diagrams. Use only the shapes needed to explain the page's concept.
 
 ### Neo-Vintage Print
 
@@ -116,16 +118,16 @@ Use this branch for dense, editorial research posters that should feel like a co
 - **Typography**: oversized bold black title, strong Chinese sans-serif headline, compact supporting text, small all-caps English metadata. Mix large numerals with tight captions.
 - **Layout**: asymmetric but grid-disciplined. Use panels, dividers, index columns, numbered steps, footer strips, side labels, and boxed callouts. Keep every block aligned to a visible grid.
 - **Color palette**: black text; electric blueprint blue for line art and emphasis; muted teal-green for panels; warm vermilion or orange-red for warnings, dots, labels, and contrast. Use cream as the base. Limit to 3 accent colors.
-- **Graphic language**: blue wireframe waveforms, contour lines, technical diagrams, dotted halftone fields, thin arrows, dashed process paths, small icon boxes, crosshair marks, circle/square markers, and simple geometric overlays.
+- **Graphic language**: content-derived technical diagrams, such as nested rings, process paths, matrices, contour fields, sparse nodes, dashed connectors, small icon boxes, crosshair marks, circle/square markers, and simple geometric overlays. Blue wireframe waveforms are optional, not mandatory; use them only when they explain flow, transformation, uncertainty, or layered structure.
 - **Information density**: medium-high. Each page may contain a headline, subtitle, diagram, 2-4 compact text blocks, and one footer insight, but avoid unreadable paragraphs.
 - **Page rhythm**: cover or thesis page; framework or comparison page; method/process page; risk or limitation page; implication or takeaway page.
 - **Use for**: prompt/context/harness/loop concepts, AI system workflows, evaluation methods, research frameworks, conceptual comparisons, and design implications that benefit from technical diagramming.
-- **Avoid**: watercolor, hand-drawn scrapbook, cyberpunk neon, heavy 3D, soft glassmorphism, childish stickers, photo collages, random decoration, and decorative elements that do not encode meaning.
+- **Avoid**: fixed decorative shapes, repeated visual motifs without semantic purpose, watercolor, hand-drawn scrapbook, cyberpunk neon, heavy 3D, soft glassmorphism, childish stickers, photo collages, random decoration, and decorative elements that do not encode meaning.
 
 Image prompt starter:
 
 ```text
-Neo-vintage technical print poster, vertical 3:4, warm aged paper texture, bold black Chinese and English sans-serif typography, modular editorial grid, thin black borders and dividers, page number and series metadata, blueprint-blue wireframe contour waveforms, muted teal panels, vermilion warning accents, dotted halftone texture, numbered process blocks, compact research-card layout, precise AI/HCI technical manual feeling, high information density, clean alignment, risograph ink grain, no glossy gradients, no stock photos, no cartoon style.
+Neo-vintage technical print poster, vertical 3:4, warm aged paper texture, bold black Chinese and English sans-serif typography, modular editorial grid, thin black borders and dividers, page number and series metadata, content-derived technical diagram shapes that match the page concept, blueprint-blue line work used only where it explains structure or relation, muted teal panels, vermilion warning accents, dotted halftone texture, compact research-card layout, precise AI/HCI technical manual feeling, high but readable information density, clean alignment, risograph ink grain, no fixed decorative motif, no glossy gradients, no stock photos, no cartoon style.
 ```
 
 ## Portfolio Translation
