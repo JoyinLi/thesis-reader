@@ -37,6 +37,15 @@ source intake
 
 Create a fresh state file from `templates/STATE.md` for each paper. Store run state with the paper project or output, not inside the installed skill directory.
 
+## Visual Deck Styles
+
+Before creating a visual deck or poster, the loop asks for a poster style. Available branches live in `references/output-templates.md`.
+
+- `Default Clean Research Deck`: the existing clean, keynote-like research deck.
+- `Neo-Vintage Print`: aged paper, modular editorial grid, blueprint line art, teal/vermilion accents, halftone texture, and dense technical-poster composition.
+
+If the user does not choose a supported style, the loop falls back to `Default Clean Research Deck`.
+
 ## Structural Validation
 
 When Python and a filesystem are available:
