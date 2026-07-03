@@ -11,6 +11,7 @@ Before drafting pages, identify:
 3. Any disagreements, refinements, open questions, or design implications discovered during the discussion.
 4. The intended audience: AI practitioner, UX/HCI designer, AI PM, portfolio reviewer, or general reader.
 5. Whether the output is a text-only page script, image-generation prompt, Figma/page layout spec, or all of these.
+6. Poster style branch. Ask the user to choose from available branches in [output-templates.md](output-templates.md), including **Neo-Vintage Print**, or the default visual system below. If the user does not choose a style or gives an unsupported style, use the default visual system below.
 
 If the source material is missing, ask for the paper summary, conversation notes, or pasted transcript. If only partial notes exist, proceed but mark uncertain claims.
 
@@ -25,6 +26,16 @@ If a `thesis` folder, image references, or previously generated paper-summary im
 - diagram style, such as simple boxes, thin lines, large keywords, minimal charts, or keynote-style callouts.
 
 If no reference images are available, use the default visual system below.
+
+## Poster Style Selection
+
+Before drafting a visual deck, ask:
+
+```text
+这组海报想用什么视觉风格？可选：Default Clean Research Deck / Neo-Vintage Print。没有偏好我会按默认风格生成。
+```
+
+Use the user's selected style only when it matches an available style branch in [output-templates.md](output-templates.md). For **Neo-Vintage Print**, follow its full branch instructions and image prompt starter from that file. For no answer, unknown style, or default request, use the Default Visual System below.
 
 ## Default Visual System
 
@@ -150,6 +161,6 @@ Before finalizing, check:
 - Does the sequence tell a story rather than list paper sections mechanically?
 - Does at least one page capture the unique insight from the LM conversation?
 - Does the final page translate the paper into concrete AI/UX/HCI/product judgment?
-- Is the visual style close to an iOS keynote deck: sparse, precise, and polished?
+- Does the visual style match the selected branch? For the default branch, keep it close to an iOS keynote deck: sparse, precise, and polished. For Neo-Vintage Print, keep the aged paper, modular grid, blueprint line art, teal/vermilion accents, and technical print density consistent.
 - Is the highlight color consistent with the research institution when appropriate?
 - If it is a pure academic paper, is the deck clean without forced corporate branding?
