@@ -56,6 +56,8 @@ During follow-up discussion, record only durable additions in the run state:
 
 Do not generate the final Xiaohongshu deck merely because the deep read is complete. Wait for an explicit user request or a clear deck-production step. Then read [xiaohongshu-visual-deck.md](references/xiaohongshu-visual-deck.md), synthesize the paper with the discussion state, and verify the result with the visual-deck section of the rubric.
 
+Before drafting a visual deck or poster, ask which poster style the user wants. Offer available style branches from [output-templates.md](references/output-templates.md), including **Neo-Vintage Print**, plus the existing default visual system. If the user gives no style, gives an unsupported style, or says to use the default, use the current default visual system from [xiaohongshu-visual-deck.md](references/xiaohongshu-visual-deck.md). Record the chosen or defaulted style in the run state.
+
 ## Output Modes
 
 Choose the mode requested by the user. Default to **structured deep read**.
@@ -91,4 +93,3 @@ Never let the loop change its own acceptance criteria to declare success. Record
 - Name specific interface patterns, control points, feedback states, evaluation criteria, and risks.
 - Make portfolio directions demonstrable through scenario, flow, system capability, interaction pattern, and evaluation signal.
 - Prefer compact, high-signal output over generic background.
-
