@@ -42,9 +42,9 @@ Create a fresh state file from `templates/STATE.md` for each paper. Store run st
 Before creating a visual deck or poster, the loop asks for a poster style. Available branches live in `references/output-templates.md`.
 
 - `Default Clean Research Deck`: the existing clean, keynote-like research deck.
-- `Neo-Vintage Print`: aged paper, modular editorial grid, blueprint line art, teal/vermilion accents, halftone texture, and dense technical-poster composition.
+- `Neo-Vintage Print`: aged paper, modular editorial grid, blueprint line work, teal/vermilion accents, halftone texture, and dense technical-poster composition.
 
-If the user does not choose a supported style, the loop falls back to `Default Clean Research Deck`.
+Visual shapes are never fixed template assets. The loop should choose shapes from the content relationship: rings for containment, paths for process, panels for contrast, loops for feedback, matrices for evaluation, or warning forms for risk. If the user does not choose a supported style, the loop falls back to `Default Clean Research Deck`.
 
 ## Structural Validation
 
