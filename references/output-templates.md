@@ -98,6 +98,36 @@ Style: clean, professional, high-signal. Avoid exaggerated claims.
 
 For 4-6 page image-text decks after multi-turn discussion, use [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md).
 
+## Poster Style Branches
+
+Use these branches when producing Xiaohongshu visual decks, poster scripts, Figma layout specs, or image-generation prompts. Ask the user which style they want before drafting poster pages. If the user does not choose a style, chooses an unknown style, or asks for the default, use the clean professional visual system already defined in [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md).
+
+### Default Clean Research Deck
+
+Use this branch when no specific style is selected. Follow the Default Visual System in [xiaohongshu-visual-deck.md](xiaohongshu-visual-deck.md): simplified iOS keynote / product-launch feeling, large title, generous whitespace, restrained subtitle, one dominant highlight color, thin dividers, soft panels, clean callouts, and simple geometric diagrams.
+
+### Neo-Vintage Print
+
+Use this branch for dense, editorial research posters that should feel like a contemporary AI/HCI zine printed on old technical manual paper.
+
+- **Core mood**: neo-vintage technical print, academic poster, risograph zine, engineering manual, high-signal social research card.
+- **Canvas**: vertical 3:4 or 4:5; use visible page numbers, series labels, thin outer borders, and a modular grid.
+- **Background**: warm off-white or aged paper, subtle fiber texture, light grain, mild ink noise. Avoid glossy gradients, dark tech backgrounds, and clean corporate white.
+- **Typography**: oversized bold black title, strong Chinese sans-serif headline, compact supporting text, small all-caps English metadata. Mix large numerals with tight captions.
+- **Layout**: asymmetric but grid-disciplined. Use panels, dividers, index columns, numbered steps, footer strips, side labels, and boxed callouts. Keep every block aligned to a visible grid.
+- **Color palette**: black text; electric blueprint blue for line art and emphasis; muted teal-green for panels; warm vermilion or orange-red for warnings, dots, labels, and contrast. Use cream as the base. Limit to 3 accent colors.
+- **Graphic language**: blue wireframe waveforms, contour lines, technical diagrams, dotted halftone fields, thin arrows, dashed process paths, small icon boxes, crosshair marks, circle/square markers, and simple geometric overlays.
+- **Information density**: medium-high. Each page may contain a headline, subtitle, diagram, 2-4 compact text blocks, and one footer insight, but avoid unreadable paragraphs.
+- **Page rhythm**: cover or thesis page; framework or comparison page; method/process page; risk or limitation page; implication or takeaway page.
+- **Use for**: prompt/context/harness/loop concepts, AI system workflows, evaluation methods, research frameworks, conceptual comparisons, and design implications that benefit from technical diagramming.
+- **Avoid**: watercolor, hand-drawn scrapbook, cyberpunk neon, heavy 3D, soft glassmorphism, childish stickers, photo collages, random decoration, and decorative elements that do not encode meaning.
+
+Image prompt starter:
+
+```text
+Neo-vintage technical print poster, vertical 3:4, warm aged paper texture, bold black Chinese and English sans-serif typography, modular editorial grid, thin black borders and dividers, page number and series metadata, blueprint-blue wireframe contour waveforms, muted teal panels, vermilion warning accents, dotted halftone texture, numbered process blocks, compact research-card layout, precise AI/HCI technical manual feeling, high information density, clean alignment, risograph ink grain, no glossy gradients, no stock photos, no cartoon style.
+```
+
 ## Portfolio Translation
 
 Use this when the user wants to turn research into a portfolio project.
