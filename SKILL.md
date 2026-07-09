@@ -1,6 +1,6 @@
 ---
 name: thesis-reader
-description: Read, analyze, verify, and synthesize academic papers, research reports, arXiv papers, technical blogs, and paper notes. Use for paper deep reading, structured research interpretation, source-grounded summaries, AI/UX/HCI or AI PM implications, portfolio translation, bilingual notes, multi-turn research discussion, Xiaohongshu research posts, 4-6 page visual decks, or a repeatable thesis-reading loop with persistent state, independent review, revision limits, and human approval gates.
+description: Read, screen, analyze, verify, and synthesize academic papers, research reports, arXiv papers, technical blogs, and paper notes. Use for pre-loop triage briefs, paper deep reading, structured research interpretation, source-grounded summaries, AI/UX/HCI or AI PM implications, portfolio translation, bilingual notes, multi-turn research discussion, Xiaohongshu research posts, 4-6 page visual decks, or a repeatable thesis-reading loop with persistent state, independent review, revision limits, and human approval gates.
 ---
 
 # Thesis Reader
@@ -11,8 +11,9 @@ Turn research sources into rigorous, decision-useful understanding. Separate sou
 
 ## Select The Run Mode
 
+- Use a **triage brief** by default whenever the user first provides a paper, research report, technical blog, PDF, URL, abstract, screenshot, or paper note. This is the pre-loop decision gate.
 - Use a **single pass** for a quick brief, term explanation, or narrow factual question.
-- Use the **verified reading loop** for a full deep read, weak or conflicting evidence, multi-source synthesis, portfolio translation, or any request that explicitly asks for a loop.
+- Use the **verified reading loop** only after the triage brief when the user confirms deeper analysis, or when the user explicitly asks to skip triage and run the full deep read immediately.
 - Use the **discussion-to-deck loop** only after a paper summary and meaningful follow-up discussion exist.
 
 Read [loop-protocol.md](references/loop-protocol.md) before starting either loop. Create one state file per paper from [STATE.md](templates/STATE.md); keep run state outside the installed skill directory.
@@ -26,7 +27,23 @@ Read [loop-protocol.md](references/loop-protocol.md) before starting either loop
 5. Cite factual claims drawn from web-accessible sources. Never invent metadata, numbers, datasets, results, quotations, or limitations.
 6. Mark uncertain statements as inference, interpretation, hypothesis, or open question.
 
+## Run The Pre-Loop Triage Brief
+
+When a new source arrives, first inspect only enough information to make a reading decision: title, abstract, introduction, conclusion, project page, summary, or visibly provided notes. Do not spend the full deep-read budget at this stage.
+
+Produce a Chinese **Triage Brief** in 500 Chinese characters or fewer using [output-templates.md](references/output-templates.md). It must include:
+
+- the paper or content's core idea;
+- why it may matter for future AI development;
+- a value rating: high / medium / low;
+- whether it is worth entering the full verified reading loop: yes / maybe / no;
+- source confidence and visible limitations.
+
+After the triage brief, ask whether to continue into the full Thesis Reader verified reading loop. Do not produce the full structured deep read in the same response unless the user explicitly requested full analysis or said to skip the triage gate.
+
 ## Run The Verified Reading Loop
+
+Start this loop only when the user confirms after triage, or explicitly asks for full deep analysis.
 
 1. **Preflight**
    Confirm source accessibility, user goal, output mode, and whether current information requires web verification. Initialize the state file.
@@ -43,7 +60,7 @@ Read [loop-protocol.md](references/loop-protocol.md) before starting either loop
 7. **Handoff**
    Deliver the verified output with source limitations, remaining uncertainties, and the questions most worth discussing. Update the state file.
 
-Run `python scripts/validate_output.py OUTPUT.md --mode deep-read` when a filesystem and Python are available. Treat this structural validator as a supplement to, not a replacement for, source-based review.
+Run `python scripts/validate_output.py OUTPUT.md --mode deep-read` when a filesystem and Python are available. Run `python scripts/validate_output.py OUTPUT.md --mode triage-brief` for pre-loop triage outputs. Treat this structural validator as a supplement to, not a replacement for, source-based review.
 
 ## Continue Into Discussion And Visual Output
 
@@ -60,10 +77,11 @@ Before drafting a visual deck or poster, ask which poster style the user wants. 
 
 ## Output Modes
 
-Choose the mode requested by the user. Default to **structured deep read**.
+Choose the mode requested by the user. Default to **triage brief** for newly supplied sources and **structured deep read** after the user confirms continuation.
 
+- **triage brief**: 500-character pre-loop screening summary and reading-value judgment.
 - **structured deep read**: rigorous paper breakdown with six to eight sections.
-- **quick brief**: short decision aid for whether the source deserves deeper reading.
+- **quick brief**: short decision aid when the user explicitly asks for a brief instead of the triage gate.
 - **concept explainer**: define and contextualize unfamiliar terms.
 - **AI/UX/HCI translation**: emphasize product and interaction implications.
 - **portfolio translation**: turn research into a demonstrable project direction.
