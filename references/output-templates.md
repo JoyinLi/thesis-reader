@@ -2,6 +2,29 @@
 
 Use these templates when the user asks for a specific output format. Adapt section depth to the source quality and user goal.
 
+## Triage Brief (Pre-Loop Screening)
+
+Use this by default immediately after receiving a new paper, report, technical blog, URL, PDF, or research note. The goal is to help decide whether the source deserves a full Thesis Reader deep read.
+
+Constraints:
+
+- Maximum 500 Chinese characters.
+- This is a reading-value assessment, not a verified deep read.
+- Clearly separate known source information from inference.
+- Use professional Chinese unless the user requests another language.
+
+Required structure:
+
+- **核心介绍**: 这篇研究 / 内容试图解决什么问题？核心观点是什么？
+- **对 AI 未来发展的意义**: 它可能改变什么能力边界、研究方向或产品可能性？
+- **价值判断**: high / medium / low, with one sentence reason.
+- **是否值得精读**: yes / maybe / no, with one sentence reason.
+- **可信度与限制**: 当前依据是论文全文、摘要、官方介绍、截图、用户笔记还是二手文章？哪些地方尚无法确认？
+
+End with:
+
+`是否进入完整 Thesis Reader verified reading loop？`
+
 ## Structured Deep Read
 
 1. **论文基本信息**
@@ -59,7 +82,7 @@ Use these templates when the user asks for a specific output format. Adapt secti
 
 ## Quick Brief
 
-Use this when the user wants to decide whether a paper is worth reading.
+Use this when the user explicitly asks for a shorter summary instead of the default triage gate.
 
 - **一句话结论**:
 - **为什么重要**:
