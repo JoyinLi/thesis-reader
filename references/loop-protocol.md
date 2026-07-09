@@ -2,6 +2,8 @@
 
 Use this protocol for full deep reads, multi-source synthesis, long-running discussion, portfolio translation, and discussion-to-deck work. Do not invoke the full loop for a narrow definition or quick factual answer.
 
+For newly supplied papers, reports, technical blogs, PDFs, URLs, abstracts, screenshots, or paper notes, start with the pre-loop triage gate unless the user explicitly asks to skip it.
+
 ## Loop Contract
 
 Define these fields before execution:
@@ -10,29 +12,52 @@ Define these fields before execution:
 |---|---|
 | Goal | What understanding or artifact must exist at the end? |
 | Source boundary | Which primary and secondary sources may be used? |
-| Output mode | Deep read, synthesis, translation, post, or visual deck |
+| Output mode | Triage brief, deep read, synthesis, translation, post, or visual deck |
 | Evidence | What proves the output is grounded and complete? |
 | State | Where progress, decisions, and open questions persist |
-| Revision budget | Default: two reviewer-driven revisions |
-| Stop rule | Pass threshold, blocked source, exhausted budget, or human decision |
-| Human gate | Interpretation choice, final narrative, publication, or external action |
+| Revision budget | Default: two reviewer-driven revisions after the deep-read loop starts |
+| Stop rule | Triage decision, pass threshold, blocked source, exhausted budget, or human decision |
+| Human gate | Continue after triage, interpretation choice, final narrative, publication, or external action |
 
 ## State Machine
 
 Use these statuses in the per-paper state file:
 
 1. `intake`: identify source and goal.
-2. `source_ready`: confirm that the evidence can be inspected.
-3. `drafting`: build the argument map and requested output.
-4. `verifying`: run a separate review against the source and rubric.
-5. `revising`: address blocking findings.
-6. `discussion`: preserve durable insights from follow-up dialogue.
-7. `deck_ready`: enough paper and discussion context exists for visual synthesis.
-8. `awaiting_human`: wait for a judgment or publication decision.
-9. `complete`: acceptance criteria passed and required human gates closed.
-10. `blocked`: source, evidence, tool, or decision prevents valid continuation.
+2. `triage`: produce the 500-character reading-value brief from limited but inspected source information.
+3. `awaiting_human`: wait for the user to decide whether to continue into the full verified loop.
+4. `source_ready`: confirm that the evidence can be inspected for full analysis.
+5. `drafting`: build the argument map and requested output.
+6. `verifying`: run a separate review against the source and rubric.
+7. `revising`: address blocking findings.
+8. `discussion`: preserve durable insights from follow-up dialogue.
+9. `deck_ready`: enough paper and discussion context exists for visual synthesis.
+10. `complete`: acceptance criteria passed and required human gates closed.
+11. `blocked`: source, evidence, tool, or decision prevents valid continuation.
 
-Do not move directly from `drafting` to `complete` for a verified-loop task.
+Do not move directly from `triage` to `drafting` unless the user confirms continuation or explicitly requested full analysis from the start. Do not move directly from `drafting` to `complete` for a verified-loop task.
+
+## Triage Pass
+
+The triage pass is a low-cost screening step, not a full paper analysis.
+
+Use only enough evidence to judge reading value:
+
+- title, abstract, introduction, conclusion, official project page, source metadata, screenshots, pasted excerpts, or user-provided notes;
+- clearly label when the source is partial or secondary;
+- do not invent datasets, metrics, results, authors, venues, or limitations;
+- do not spend the full deep-read budget or generate the full structured deep read.
+
+Return a Triage Brief with:
+
+- core idea;
+- significance for future AI development;
+- value rating: high / medium / low;
+- decision: worth deep reading yes / maybe / no;
+- confidence and visible limitations;
+- the question asking whether to continue into the full verified loop.
+
+If the source is too incomplete even for triage, set status to `blocked` and request the missing source or excerpt.
 
 ## Worker Pass
 
@@ -72,6 +97,13 @@ When no separate agent is available, run a distinct second pass that reopens the
 
 ## Acceptance And Stop Rules
 
+Complete a triage step only when:
+
+- it fits the 500-character limit;
+- source confidence and limitations are visible;
+- value rating and deep-read decision are explicit;
+- the state file records the triage result and next action.
+
 Complete a deep read only when:
 
 - the rubric score meets its threshold;
@@ -86,6 +118,7 @@ Stop as `blocked` when the central evidence is inaccessible, contradictory, corr
 
 Require explicit user judgment before:
 
+- entering the full verified reading loop after the triage brief;
 - choosing a controversial interpretation when evidence supports multiple readings;
 - converting tentative research into a strong product recommendation;
 - deciding the final editorial angle after multi-turn discussion;
@@ -94,8 +127,8 @@ Require explicit user judgment before:
 
 ## Budget Defaults
 
-- Maximum revision rounds: 2.
+- Triage pass: one concise pass, no revision loop unless the source was misunderstood.
+- Maximum revision rounds for full deep read: 2.
 - Maximum repeated attempts on an inaccessible source: 2 methods, then ask.
 - Default reviewer count: 1 independent verifier.
 - Use additional sources only when they resolve a material gap, current-state question, or conflict.
-
