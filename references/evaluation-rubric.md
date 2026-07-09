@@ -32,6 +32,14 @@ Any one of these prevents a pass:
 
 ## Mode-Specific Checks
 
+### Triage Brief
+
+- Fits within 500 Chinese characters unless the user requests another language or extra detail.
+- States the core idea, AI future significance, value rating, deep-read decision, and source confidence or limitation.
+- Makes a reading-value judgment without pretending to have completed full verification.
+- Avoids invented metadata, datasets, metrics, sample sizes, result numbers, and unsupported author claims.
+- Ends by asking whether to enter the full Thesis Reader verified reading loop.
+
 ### Structured Deep Read
 
 - Cover basic information, motivation, method, evidence, conclusion, limitations, plain-language understanding, AI/UX/HCI implications, and actionable directions.
@@ -75,4 +83,3 @@ Non-blocking improvements:
 Required next action:
 - revise | request source | request human decision | complete
 ```
-

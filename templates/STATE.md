@@ -2,7 +2,7 @@
 paper_id: ""
 title: ""
 status: intake
-output_mode: structured-deep-read
+output_mode: triage-brief
 revision_round: 0
 max_revision_rounds: 2
 updated_at: ""
@@ -22,6 +22,16 @@ updated_at: ""
 | Source | Type | Primary | Accessed | Notes |
 |---|---|---:|---:|---|
 |  |  |  |  |  |
+
+## Triage Brief
+
+- Core idea:
+- AI future significance:
+- Value rating: high / medium / low
+- Deep-read decision: yes / maybe / no
+- Source confidence:
+- Visible limitations:
+- User decision after triage: continue / stop / pending
 
 ## Argument Map
 
@@ -68,6 +78,7 @@ updated_at: ""
 
 ## Human Gates
 
+- [ ] User decided whether to continue after triage
 - [ ] Interpretation approved where evidence permits multiple readings
 - [ ] Product or portfolio recommendation approved
 - [ ] Final deck requested
@@ -75,6 +86,7 @@ updated_at: ""
 
 ## Outputs
 
+- Triage brief:
 - Deep read:
 - Discussion synthesis:
 - Visual deck:

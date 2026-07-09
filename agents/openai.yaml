@@ -1,5 +1,4 @@
 interface:
   display_name: "Thesis Reader"
-  short_description: "Read and verify research for AI, UX, and HCI work."
-  default_prompt: "Use $thesis-reader to run a verified deep-reading loop on this paper and surface its AI/UX/HCI implications."
-
+  short_description: "Screen, read, and verify research for AI, UX, and HCI work."
+  default_prompt: "Use $thesis-reader to first create a concise 500-character triage brief evaluating this paper's value and AI significance. If I confirm, continue with the verified deep-reading loop and surface its AI/UX/HCI implications."
