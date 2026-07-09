@@ -1,6 +1,6 @@
 ---
 name: thesis-reader
-description: Read, screen, analyze, verify, and synthesize academic papers, research reports, arXiv papers, technical blogs, and paper notes. Use for pre-loop triage briefs, paper deep reading, structured research interpretation, source-grounded summaries, AI/UX/HCI or AI PM implications, portfolio translation, bilingual notes, multi-turn research discussion, Xiaohongshu research posts, 4-6 page visual decks, or a repeatable thesis-reading loop with persistent state, independent review, revision limits, and human approval gates.
+description: Read, screen, analyze, verify, package, and synthesize academic papers, research reports, arXiv papers, technical blogs, and paper notes. Use for pre-loop triage briefs, paper deep reading, structured research interpretation, source-grounded summaries, AI/UX/HCI or AI PM implications, portfolio translation, bilingual notes, multi-turn research discussion, Paper Knowledge Packages, Research Knowledge Base handoff, Xiaohongshu research posts, 4-6 page visual decks, or a repeatable thesis-reading loop with persistent state, independent review, revision limits, and human approval gates.
 ---
 
 # Thesis Reader
@@ -15,8 +15,9 @@ Turn research sources into rigorous, decision-useful understanding. Separate sou
 - Use a **single pass** for a quick brief, term explanation, or narrow factual question.
 - Use the **verified reading loop** only after the triage brief when the user confirms deeper analysis, or when the user explicitly asks to skip triage and run the full deep read immediately.
 - Use the **discussion-to-deck loop** only after a paper summary and meaningful follow-up discussion exist.
+- Use the **knowledge-base handoff** after verified reading and meaningful discussion, when the user wants to preserve the work in `research-knowledge-base`.
 
-Read [loop-protocol.md](references/loop-protocol.md) before starting either loop. Create one state file per paper from [STATE.md](templates/STATE.md); keep run state outside the installed skill directory.
+Read [loop-protocol.md](references/loop-protocol.md) before starting either loop. Create one state file per paper from [STATE.md](templates/STATE.md); keep run state outside the installed skill directory. For platform-independent handoff, read [CONTRACT.md](CONTRACT.md) and [knowledge-base-handoff.md](references/knowledge-base-handoff.md).
 
 ## Handle Sources
 
@@ -75,12 +76,29 @@ Do not generate the final Xiaohongshu deck merely because the deep read is compl
 
 Before drafting a visual deck or poster, ask which poster style the user wants. Offer available style branches from [output-templates.md](references/output-templates.md), including **Neo-Vintage Print**, plus the existing default visual system. If the user gives no style, gives an unsupported style, or says to use the default, use the current default visual system from [xiaohongshu-visual-deck.md](references/xiaohongshu-visual-deck.md). Record the chosen or defaulted style in the run state.
 
+## Package For Research Knowledge Base
+
+After the verified reading loop passes and enough discussion memory exists, generate a **Paper Knowledge Package** using [output-templates.md](references/output-templates.md) and [CONTRACT.md](CONTRACT.md). This package is the handoff object for `research-knowledge-base`.
+
+Always ask before entering the downstream Knowledge Base Loop:
+
+`是否将这篇内容转入 Research Knowledge Base Loop？`
+
+Options:
+
+1. Add to knowledge base
+2. Generate Knowledge Card draft only
+3. Skip for now
+
+Do not update long-term indexes, concept maps, portfolio idea maps, or research beliefs inside Thesis Reader. Those changes belong to `research-knowledge-base` and require user approval.
+
 ## Output Modes
 
 Choose the mode requested by the user. Default to **triage brief** for newly supplied sources and **structured deep read** after the user confirms continuation.
 
 - **triage brief**: 500-character pre-loop screening summary and reading-value judgment.
 - **structured deep read**: rigorous paper breakdown with six to eight sections.
+- **paper knowledge package**: standardized handoff object for `research-knowledge-base`.
 - **quick brief**: short decision aid when the user explicitly asks for a brief instead of the triage gate.
 - **concept explainer**: define and contextualize unfamiliar terms.
 - **AI/UX/HCI translation**: emphasize product and interaction implications.
@@ -99,7 +117,7 @@ Stop the loop and ask the user when:
 - source metadata or reported results conflict materially;
 - the user must choose between competing interpretations or output goals;
 - two revision rounds fail the acceptance threshold;
-- the next step would publish content, modify an external system, or make an irreversible decision.
+- the next step would publish content, modify an external system, modify a downstream knowledge base, or make an irreversible decision.
 
 Never let the loop change its own acceptance criteria to declare success. Record unresolved issues instead of hiding them.
 
