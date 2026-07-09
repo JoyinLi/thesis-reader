@@ -10,6 +10,13 @@ from pathlib import Path
 
 
 MODE_SECTIONS = {
+    "triage-brief": [
+        ("core introduction", ["核心介绍", "核心观点", "core idea", "core introduction"]),
+        ("AI future significance", ["ai 未来", "未来发展", "why it matters", "significance"]),
+        ("value rating", ["价值判断", "value rating", "high", "medium", "low"]),
+        ("reading decision", ["是否值得精读", "值得精读", "deep-read decision", "yes", "maybe", "no"]),
+        ("confidence and limits", ["可信度", "限制", "source confidence", "limitation"]),
+    ],
     "deep-read": [
         ("basic information", ["论文基本信息", "basic information", "paper information"]),
         ("motivation", ["研究动机", "motivation"]),
@@ -39,6 +46,13 @@ def contains_any(text: str, aliases: list[str]) -> bool:
     return any(alias.lower() in text for alias in aliases)
 
 
+def approximate_chinese_chars(text: str) -> int:
+    """Count CJK characters plus alphanumeric words as a rough Chinese-length proxy."""
+    cjk = re.findall(r"[\u4e00-\u9fff]", text)
+    latin_words = re.findall(r"[A-Za-z0-9]+", text)
+    return len(cjk) + len(latin_words)
+
+
 def validate_sections(text: str, mode: str) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -47,6 +61,15 @@ def validate_sections(text: str, mode: str) -> tuple[list[str], list[str]]:
     for label, aliases in MODE_SECTIONS.get(mode, []):
         if not contains_any(normalized, aliases):
             errors.append(f"Missing required section: {label}")
+
+    if mode == "triage-brief":
+        length = approximate_chinese_chars(text)
+        if length > 500:
+            errors.append(f"Triage brief should be within 500 Chinese characters; estimated length is {length}.")
+        if not contains_any(normalized, ["verified reading loop", "完整", "继续", "是否进入"]):
+            warnings.append("No explicit prompt asking whether to continue into the full verified loop detected.")
+        if contains_any(normalized, ["实验设计", "可复现", "作品集叙事"]):
+            warnings.append("Triage brief may be drifting into full deep-read structure.")
 
     if mode == "deep-read":
         if not re.search(r"https?://|\[[^\]]+\]\([^\)]+\)", text):
@@ -89,7 +112,7 @@ def main() -> int:
     parser.add_argument("output", type=Path, help="Markdown output to validate")
     parser.add_argument(
         "--mode",
-        choices=["deep-read", "quick-brief", "visual-deck"],
+        choices=["triage-brief", "deep-read", "quick-brief", "visual-deck"],
         default="deep-read",
     )
     args = parser.parse_args()
@@ -116,4 +139,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
