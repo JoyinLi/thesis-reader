@@ -67,6 +67,21 @@ updated_at: ""
 - New AI/UX/HCI implications:
 - Open questions:
 
+## Knowledge Base Handoff
+
+- Paper Knowledge Package:
+- Package status: not_started / draft / package_ready / skipped
+- Add to knowledge base recommendation: yes / maybe / no
+- Suggested domains:
+- Suggested concepts:
+- Suggested methods:
+- Suggested UX patterns:
+- Related existing beliefs:
+- Belief update type: new / strengthen / weaken / challenge / none
+- User handoff decision: add_to_knowledge_base / draft_only / skip / pending
+- Downstream loop: research-knowledge-base
+- Downstream result:
+
 ## Visual Output
 
 - Poster style requested:
@@ -81,6 +96,7 @@ updated_at: ""
 - [ ] User decided whether to continue after triage
 - [ ] Interpretation approved where evidence permits multiple readings
 - [ ] Product or portfolio recommendation approved
+- [ ] Knowledge base handoff approved
 - [ ] Final deck requested
 - [ ] Publication or external action approved
 
@@ -89,5 +105,6 @@ updated_at: ""
 - Triage brief:
 - Deep read:
 - Discussion synthesis:
+- Paper Knowledge Package:
 - Visual deck:
 - Other artifacts:

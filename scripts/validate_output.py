@@ -27,6 +27,15 @@ MODE_SECTIONS = {
         ("AI/UX/HCI implications", ["ux", "hci", "ai pm", "设计启发", "产品启发"]),
         ("actionable direction", ["可复现", "可改进", "作品集", "reproduction", "portfolio"]),
     ],
+    "paper-knowledge-package": [
+        ("source metadata", ["source metadata", "metadata", "source confidence", "源", "来源"]),
+        ("verified core", ["verified core", "core thesis", "核心", "research problem"]),
+        ("evidence strength", ["evidence strength", "证据强度", "key evidence"]),
+        ("discussion synthesis", ["discussion synthesis", "讨论", "user conclusions", "concepts clarified"]),
+        ("AI/UX/HCI translation", ["ai / ux / hci", "ux", "hci", "interface implication", "设计"]),
+        ("knowledge base recommendation", ["knowledge base recommendation", "add to knowledge base", "belief update", "知识库"]),
+        ("handoff gate", ["research knowledge base loop", "handoff gate", "是否将", "转入"]),
+    ],
     "quick-brief": [
         ("one-line conclusion", ["一句话结论", "one-line", "one sentence"]),
         ("importance", ["为什么重要", "why it matters", "importance"]),
@@ -77,6 +86,12 @@ def validate_sections(text: str, mode: str) -> tuple[list[str], list[str]]:
         if len(text.split()) < 250 and len(text) < 1200:
             warnings.append("Deep-read output is unusually short; confirm evidence coverage.")
 
+    if mode == "paper-knowledge-package":
+        if contains_any(normalized, ["updated concept-index", "updated belief-map", "已写入知识库"]):
+            warnings.append("Package may be claiming downstream knowledge-base writes; confirm user approval.")
+        if not contains_any(normalized, ["add to knowledge base", "generate knowledge card", "skip", "跳过"]):
+            warnings.append("No explicit handoff options detected.")
+
     return errors, warnings
 
 
@@ -112,7 +127,7 @@ def main() -> int:
     parser.add_argument("output", type=Path, help="Markdown output to validate")
     parser.add_argument(
         "--mode",
-        choices=["triage-brief", "deep-read", "quick-brief", "visual-deck"],
+        choices=["triage-brief", "deep-read", "paper-knowledge-package", "quick-brief", "visual-deck"],
         default="deep-read",
     )
     args = parser.parse_args()

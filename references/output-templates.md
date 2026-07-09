@@ -80,6 +80,64 @@ End with:
    - 评价指标
    - 作品集叙事角度
 
+## Paper Knowledge Package
+
+Use this after the verified reading loop and meaningful discussion, or when the user explicitly asks to export the paper into a downstream knowledge loop. This is a handoff object, not a public-facing summary.
+
+```md
+# Paper Knowledge Package
+
+## Source Metadata
+- Title:
+- Authors:
+- Institution / venue:
+- Year / date:
+- Source type:
+- Primary source inspected: yes / no / partial
+- Source confidence: high / medium / low
+
+## Verified Core
+- Core thesis:
+- Research problem:
+- Claimed contribution:
+- Method or mechanism:
+- Key evidence:
+- Evidence strength: strong / medium / weak / unknown
+- Author-stated limitations:
+- Independent critique:
+
+## Discussion Synthesis
+- Concepts clarified:
+- User conclusions:
+- Disagreements or corrections:
+- Open questions:
+- What became clearer after discussion:
+
+## AI / UX / HCI Translation
+- System capability implied:
+- Interface implication:
+- User control or agency issue:
+- Failure mode:
+- Evaluation signal:
+- Portfolio relevance:
+
+## Knowledge Base Recommendation
+- Add to knowledge base: yes / maybe / no
+- Suggested domains:
+- Suggested concepts:
+- Suggested methods:
+- Suggested UX patterns:
+- Related existing beliefs:
+- Belief update type: new / strengthen / weaken / challenge / none
+- Confidence and limits:
+
+## Handoff Gate
+是否将这篇内容转入 Research Knowledge Base Loop？
+1. Add to knowledge base
+2. Generate Knowledge Card draft only
+3. Skip for now
+```
+
 ## Quick Brief
 
 Use this when the user explicitly asks for a shorter summary instead of the default triage gate.
