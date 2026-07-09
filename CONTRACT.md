@@ -6,6 +6,12 @@ Thesis Reader produces a Paper Knowledge Package after the verified reading loop
 
 This package is the platform-independent handoff object for downstream loops such as `research-knowledge-base`.
 
+## Product-Neutral Contract
+
+The package should capture generalizable UX / HCI / AI PM takeaways rather than defaulting to any specific product, device, company project, or user project.
+
+Do not mention or center Robot Phone, phone hardware, embodied devices, or any other named product unless the source itself is about that product or the user explicitly requests that lens. Product examples should be replaceable and secondary to broader interaction principles.
+
 ## Required Fields
 
 - Source metadata
